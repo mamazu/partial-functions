@@ -1,0 +1,15 @@
+{
+    "name": "mamazu/partial-functions",
+    "description": "Applying partial functions",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    },
+    "authors": [
+        {
+            "name": "mamazu",
+            "email": "maxo.pech@gmail.com"
+        }
+    ],
+    "require": {}
+}
