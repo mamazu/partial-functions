@@ -11,5 +11,10 @@
             "email": "maxo.pech@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Mamazu\\PartialFunctions\\": "src/"
+        }
+    },
     "require": {}
 }
