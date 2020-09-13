@@ -3,10 +3,11 @@ This library provides a partial function interface for php.
 
 ## Usage
 ```php
-$searchInString = new PartialFunction('strpos');
+$factory = new PartialFunctionFactory();
+$searchInString = $factory->createForCallable('strpos');
 $searchInString->apply(['haystack' => 'Hello in PHP']);
 
-$helloPos = $searchInString->call(['needle' => 'Hello']);
-$phpPos = $searchInString->call(['needle' => 'PHP']);
+$hellopos = $searchinstring->call(['needle' => 'hello']);
+$phppos = $searchinstring->call(['needle' => 'php']);
 ```
 

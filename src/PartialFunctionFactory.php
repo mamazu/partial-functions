@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace Mamazu\PartialFunctions;
 
 use ReflectionMethod;
+use Closure;
+use ReflectionFunction;
+use ReflectionFunctionAbstract;
 
-class ReflectionFactory {
+class PartialFunctionFactory {
     /**
      * @param callable $callable
      *
      * @return ReflectionFunction|ReflectionMethod
      */
-    public function reflect(callable $callable) {
+    private function reflect($callable) {
         if ($callable instanceof Closure) {
             return new ReflectionFunction($callable);
         }
@@ -26,16 +29,25 @@ class ReflectionFactory {
         return new ReflectionMethod($callable[0], $callable[1]);
     }
 
-    public function getRequiredParamters(callable $callable):array {
+    private function getMissingParameters(ReflectionFunctionAbstract $reflection):array {
         $requiredParameters = [];
-        foreach($this->reflect($callable)->getParameters() as $parameter) {
-            if(!$parameter->isOptional()) {
+        foreach($reflection->getParameters() as $parameter) {
+            if($parameter->isOptional()) {
                 continue;
             }
 
             $requiredParameters[] = $parameter->getName();
         }
         return $requiredParameters;
-
     }
+
+    public function createForCallable($callable): PartialFunction
+    {
+        $reflection = $this->reflect($callable);
+        return new PartialFunction(
+            $reflection,
+            $this->getMissingParameters($reflection)
+        );
+    }
+
 }

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use Mamazu\PartialFunctions\Functor;
-use Mamazu\PartialFunctions\PartialFunction;
+use Mamazu\PartialFunctions\PartialFunctionFactory;
 
 class A
 {
@@ -29,14 +28,11 @@ function printDate($format = 'Y-m-d'){
     print_r(date($format));
 }
 
-$a = Functor::create(A::class, ['name' => 'Hello', 'someNumber' => 100]);
+$factory = new PartialFunctionFactory();
 
-$helloMethod = new PartialFunction([$a, 'hello']);
-$helloMethod
-    ->apply(['b' => 'Boop'])
-    ->apply(['a' => 'Boop2'])
-    ->call();
-die();
+$searchInString = $factory->createForCallable('strpos');
+$searchInString->apply(['haystack' => 'Hello in PHP']);
 
-$p = new PartialFunction('printDate');
-var_dump($p->isPartial());
+
+var_dump($searchInString->call(['needle' => 'hello']));
+var_dump($searchInString->call(['needle' => 'php']));
