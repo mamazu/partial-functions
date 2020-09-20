@@ -34,5 +34,7 @@ $searchInString = $factory->createForCallable('strpos');
 $searchInString->apply(['haystack' => 'Hello in PHP']);
 
 
-var_dump($searchInString->call(['needle' => 'hello']));
-var_dump($searchInString->call(['needle' => 'php']));
+var_dump($searchInString->call(['needle' => 'Hello']));
+var_dump($searchInString->call(['needle' => 'PHP']));
+var_dump($searchInString('PHP'));
+

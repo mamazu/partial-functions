@@ -16,5 +16,7 @@
             "Mamazu\\PartialFunctions\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "php": "^7.3"
+    }
 }
