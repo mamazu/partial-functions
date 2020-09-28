@@ -58,7 +58,7 @@ class PartialFunction
      * @param array<ReflectionParameter> $reflectionParams
      * @param array<mixed> $values
      */
-    public function constructArguments(array $values): array
+    private function constructArguments(array $values): array
     {
         $resolvedArguments = [];
         foreach ($this->function->getParameters() as $parameter) {
