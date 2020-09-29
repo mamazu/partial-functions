@@ -9,7 +9,8 @@ use Closure;
 use ReflectionFunction;
 use ReflectionFunctionAbstract;
 
-class PartialFunctionFactory {
+class PartialFunctionFactory 
+{
     /**
      * @param callable $callable
      *

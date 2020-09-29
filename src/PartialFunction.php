@@ -11,8 +11,9 @@ use ReflectionParameter;
 
 class PartialFunction
 {
-    private static $internalDefaultValues = [
+    public static $internalDefaultValues = [
         'strpos' => ['offset' => 0],
+        'str_getcsv' => ['delimiter' => ',', 'escape' => '\\', 'enclosure' => '"']
     ];
 
     /** @var ReflectionMethod|ReflectionFunction */
